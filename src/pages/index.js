@@ -1,2 +1,3 @@
-export * from "./programing";
-export * from "./home";
+export * from "./Programing";
+export * from "./Home";
+export * from "./Search";

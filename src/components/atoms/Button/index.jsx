@@ -10,7 +10,8 @@ const Button = ({
     <button
       className={`px-4 py-2 rounded-lg hover:contrast-150 transition-all ${className} ${size}`}
       type={type}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {children}
     </button>
   );
