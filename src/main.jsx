@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Home, Programing } from "./pages";
+import { Home, Programing, Search } from "./pages";
 
 export const Router = createBrowserRouter([
   {
@@ -12,6 +12,10 @@ export const Router = createBrowserRouter([
   {
     path: "/programing",
     element: <Programing />,
+  },
+  {
+    path: "/search/:search",
+    element: <Search />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
