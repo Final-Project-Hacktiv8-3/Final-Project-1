@@ -27,7 +27,7 @@ export const Navbar = () => {
     {
       id: 3,
       navItem: "Covid-19",
-      link: "/awards",
+      link: "/covid",
     },
     {
       id: 4,
