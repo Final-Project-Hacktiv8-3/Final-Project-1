@@ -1,3 +1,12 @@
+import { Navbar } from "../../components/organisms";
+import MainContent from "../../components/templates/MainContent";
+import { endpoints } from "../../lib";
+
 export const Programing = () => {
-  return <div className="text-emerald-200">Programming</div>;
+  return (
+    <>
+      <Navbar />
+      <MainContent endpoint={endpoints.programing} category={"Programing"} />
+    </>
+  );
 };

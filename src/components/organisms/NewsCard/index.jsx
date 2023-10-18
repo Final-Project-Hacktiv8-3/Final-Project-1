@@ -11,13 +11,13 @@ export const NewsCard = ({ source, title, description, author, url }) => {
   return (
     <article className="flex flex-col justify-between p-4 w-72 h-96 rounded-lg">
       <div className="flex flex-col h-1/2">
-        <p className="text-sm">{source}</p> {/* source.name */}
+        <p className="text-sm">{source.name}</p> {/* source.name */}
         <h1 className="font-semibold text-xl line-clamp-4">
           {" "}
           {/* title */}
           {title}
         </h1>
-        <p className="my-1 opacity-70">{author}</p> {/* author */}
+        <p className="my-1 opacity-70 line-clamp-1">{author}</p> {/* author */}
       </div>
       <div className="h-1/2">
         <p className="line-clamp-5 tracking-tight">
