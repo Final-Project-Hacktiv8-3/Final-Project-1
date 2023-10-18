@@ -32,7 +32,7 @@ export const Navbar = () => {
     {
       id: 4,
       navItem: "Saved",
-      link: "/saved",
+      link: "/save",
     },
   ];
   const handleKeyPresed = (e) => {
