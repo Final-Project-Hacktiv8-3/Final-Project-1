@@ -12,7 +12,7 @@ export const Search = () => {
     const data = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_NEWS_URL}q=${search}&apikey=${
+          `${import.meta.env.VITE_NEWS_URL}?q=${search}&apikey=${
             import.meta.env.VITE_NEWS_API_KEY
           }`
         );
