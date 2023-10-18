@@ -1,10 +1,14 @@
 import Button from "../../atoms/Button";
 import PropTypes from "prop-types";
 import { database } from '../../../config/index'
-import {ref,set} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js'
+import {ref,set, } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js'
+import {remove} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js'
 
 
-export const NewsCard = ({ source, title, description, author, url}) => {
+export const NewsCard = ({ source, title, description, author, url,disabled,id}) => {
+  
+
+  console.log(id)
 
   NewsCard.propTypes = {
     source: PropTypes.string,
@@ -15,6 +19,11 @@ export const NewsCard = ({ source, title, description, author, url}) => {
   };
   
 
+  const handleRemove = (id) =>{
+    let exactLocationOfItemInDB = ref(database, `newsList/${id}`)
+
+    remove(exactLocationOfItemInDB)
+  }
 
   const handleSaving = () =>{
     const timestamp = new Date().getTime();
@@ -26,6 +35,8 @@ export const NewsCard = ({ source, title, description, author, url}) => {
       description: description,
       url: url,
   });
+
+  
 
 
   }
@@ -56,7 +67,11 @@ export const NewsCard = ({ source, title, description, author, url}) => {
             News Page
           </Button>
         </a>
-        <Button className="bg-blue-500 text-white" onClick={()=>handleSaving(source, title, description, author, url)} >Save</Button>
+
+        {disabled ? <Button className="bg-blue-500 text-white" onClick={()=>handleRemove(id)} >Unsaved</Button> 
+        : 
+        <Button className="bg-blue-500 text-white" onClick={()=>handleSaving(source, title, description, author, url)} >Save</Button> }
+        
       </div>
     </article>
   );
