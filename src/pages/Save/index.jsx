@@ -10,6 +10,7 @@ export const Save = () => {
 
     const [datas, setDatas] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isDisabled, setisDisabled] = useState(true)
 
     useEffect(() => {
 
@@ -25,7 +26,6 @@ export const Save = () => {
         })
     }, [])
 
-    console.log(datas);
     
 
 
@@ -43,10 +43,12 @@ export const Save = () => {
             {datas.map(news => (
               <NewsCard
               key={news[0]}
+              id={news[0]}
               title={news[1]?.title}
               description={news[1]?.description}
               author={news[1]?.author}
               url={news[1]?.url}
+              disabled={isDisabled}
               />
             ))}
           </>
