@@ -39,7 +39,7 @@ export const NewsCard = ({
           <div className="flex gap-2 text-sm py-1 opacity-70">
             <div className="flex items-center gap-1">
               <PiUser size={20} />
-              <span>{source.name}</span>
+              {/* <span>{source.name}</span> */}
             </div>
             <div className="flex items-center gap-1">
               <PiCalendarBlank size={20} />
