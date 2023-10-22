@@ -4,6 +4,8 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Covid } from "./pages/Covid";
 import { Home, Programing, Search, Save } from "./pages";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 export const Router = createBrowserRouter([
   {
@@ -29,6 +31,8 @@ export const Router = createBrowserRouter([
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={Router} />
+    <Provider store={store}>
+      <RouterProvider router={Router} />
+    </Provider>
   </React.StrictMode>
 );

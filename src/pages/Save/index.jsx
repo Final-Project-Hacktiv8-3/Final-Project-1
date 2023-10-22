@@ -1,66 +1,37 @@
-import React from 'react'
-import { useEffect,useState } from 'react'
-import { newListSave,database } from '../../config/index.js'
-import {onValue} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js'
-import { Navbar, NewsCard } from '../../components/organisms/index.js'
-import { Loading } from '../../components/molucules/index.js'
-
+import { Navbar, NewsCard } from "../../components/organisms/index.js";
+import { useSelector } from "react-redux";
 
 export const Save = () => {
-
-    const [datas, setDatas] = useState([])
-    const [isLoading, setIsLoading] = useState(true)
-    const [isDisabled, setisDisabled] = useState(true)
-
-    useEffect(() => {
-
-        onValue(newListSave, function(snapshot) {
-   
-            if (snapshot.exists()) {
-                let itemsArray = Object.entries(snapshot.val())
-                setDatas(itemsArray)
-                setIsLoading(false);
-            
-             
-            }   
-        })
-    }, [])
-
-    
-
-
+  const savedNews = useSelector((state) => state.news.data.saved);
   return (
     <>
-    <Navbar />
-    <div className="flex flex-col gap-x-5 items-center justify-center w-full min-h-screen">
-      <h1 className="-mt-60 capitalize text-4xl">Saved</h1>
-      <div className="border-b-2 border-slate-900 w-[70%] m-[1rem]" />
-      <div className=" flex flex-wrap justify-center items-center w-full">
-        {isLoading ? (
-          <Loading />
+      <Navbar />
+      <main className="flex flex-col gap-x-5 items-center justify-center w-full min-h-screen">
+        {savedNews.length > 0 ? (
+          <div className="w-full">
+            <section className="mt-[10vh] w-full flex flex-col justify-center items-center">
+              <h1 className=" capitalize text-4xl">Saved News</h1>
+              <div className="border-b-2 border-slate-900 w-[70%] m-[1rem]" />
+            </section>
+            <div className="flex flex-wrap justify-center items-center w-full gap-3">
+              {savedNews.map((item, index) => (
+                <div key={index}>
+                  <NewsCard
+                    source={item.source}
+                    title={item.title}
+                    description={item.description}
+                    publishedAt={item.publishedAt}
+                    url={item.url}
+                    urlToImage={item.urlToImage}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         ) : (
-          <>
-            {datas.map(news => (
-              <NewsCard
-              key={news[0]}
-              id={news[0]}
-              title={news[1]?.title}
-              description={news[1]?.description}
-              author={news[1]?.author}
-              url={news[1]?.url}
-              disabled={isDisabled}
-              />
-            ))}
-          </>
+          <h1>No Saved News</h1>
         )}
-      </div>
-    </div>
-  </>
-  )
-}
-
-
-
-
-
-
+      </main>
+    </>
+  );
+};
