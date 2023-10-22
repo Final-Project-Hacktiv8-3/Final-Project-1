@@ -14,15 +14,16 @@ const MainContent = ({ endpoint, category }) => {
         <div className="border-b-2 border-slate-900 w-[70%] m-[1rem]" />
       </section>
       {isLoading && <Loading />}
-      <div className="grid grid-cols-1 gap-x-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data?.articles.map((item, index) => (
           <div key={index}>
             <NewsCard
-              author={item.author}
+              publishedAt={item.publishedAt}
               description={item.description}
               source={item.source}
               title={item.title}
               url={item.url}
+              urlToImage={item.urlToImage}
             />
           </div>
         ))}

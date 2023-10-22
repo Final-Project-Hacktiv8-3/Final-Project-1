@@ -2,20 +2,16 @@ import PropTypes from "prop-types";
 const Button = ({
   children,
   className,
-  // disabled,
   size = "h-10 w-28",
   type = "button",
   onClick = () => {},
 }) => {
   return (
     <button
-      className={`px-4 py-2 rounded-lg hover:contrast-150 transition-all ${className} ${size}`}
+      className={`px-4 py-2 rounded-lg transition-all ${className} ${size}`}
       type={type}
-      onClick={onClick}
-      // disabled={disabled}
-    >
+      onClick={onClick}>
       {children}
-
     </button>
   );
 };
@@ -26,7 +22,6 @@ Button.propTypes = {
   size: PropTypes.string,
   type: PropTypes.string,
   onClick: PropTypes.func,
-  disabled: PropTypes.bool,
 };
 
 export default Button;
