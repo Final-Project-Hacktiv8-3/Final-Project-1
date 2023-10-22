@@ -1,7 +1,14 @@
 import Button from "../../atoms/Button";
 import PropTypes from "prop-types";
-import { PiBookmarkSimpleBold, PiCalendarBlank, PiUser } from "react-icons/pi";
+import {
+  PiBookmarkSimpleBold,
+  PiBookmarkSimpleFill,
+  PiCalendarBlank,
+  PiUser,
+} from "react-icons/pi";
 import { formattedDate } from "../../../lib";
+import { useDispatch, useSelector } from "react-redux";
+import { saveNews } from "../../../features/news/newsSlice";
 
 export const NewsCard = ({
   source,
@@ -18,6 +25,17 @@ export const NewsCard = ({
     publishedAt: PropTypes.string,
     url: PropTypes.string,
     urlToImage: PropTypes.string,
+  };
+
+  const dispatch = useDispatch();
+  const savedNews = useSelector((state) => state.news.data.saved);
+
+  const isNewsSaved = savedNews.find((item) => item.title === title);
+
+  const handleSaveNews = () => {
+    dispatch(
+      saveNews({ title, source, description, publishedAt, url, urlToImage })
+    );
   };
 
   return (
@@ -39,7 +57,7 @@ export const NewsCard = ({
           <div className="flex gap-2 text-sm py-1 opacity-70">
             <div className="flex items-center gap-1">
               <PiUser size={20} />
-              {/* <span>{source.name}</span> */}
+              <span>{source.name}</span>
             </div>
             <div className="flex items-center gap-1">
               <PiCalendarBlank size={20} />
@@ -58,8 +76,14 @@ export const NewsCard = ({
               Read More
             </Button>
           </a>
-          <button title="Save News" className="hover:scale-110 transition-all">
-            <PiBookmarkSimpleBold size={32} />
+          <button
+            className="hover:scale-110 transition-all"
+            onClick={handleSaveNews}>
+            {isNewsSaved ? (
+              <PiBookmarkSimpleFill size={28} title="Unsave News"/>
+            ) : (
+              <PiBookmarkSimpleBold size={28} title="Save News"/>
+            )}
           </button>
         </div>
       </div>
