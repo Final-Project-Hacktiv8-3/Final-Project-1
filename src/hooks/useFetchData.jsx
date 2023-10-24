@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 
-const useFetchData = (endpoint) => {
+const useFetchData = (endpoint, currentPage) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -11,7 +11,9 @@ const useFetchData = (endpoint) => {
     const getData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_NEWS_URL}/${endpoint}&apiKey=${
+          `${
+            import.meta.env.VITE_NEWS_URL
+          }/${endpoint}&page=${currentPage}&apiKey=${
             import.meta.env.VITE_NEWS_API_KEY
           }`
         );
@@ -25,7 +27,7 @@ const useFetchData = (endpoint) => {
     };
 
     getData();
-  }, [endpoint]);
+  }, [endpoint, currentPage]);
 
   return { data, isLoading, error };
 };

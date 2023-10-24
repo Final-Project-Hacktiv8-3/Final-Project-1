@@ -1,11 +1,17 @@
 import useFetchData from "@hooks/useFetchData";
-import { Loading } from "@components/molucules";
+import { Loading, Pagination } from "@components/molucules";
 import { NewsCard } from "@components/organisms";
 
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 const MainContent = ({ endpoint, category }) => {
-  const { data, isLoading } = useFetchData(`${endpoint}`);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data, isLoading } = useFetchData(`${endpoint}`, currentPage);
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <main className="flex flex-col gap-x-5 items-center justify-center w-full min-h-screen bg-white dark:bg-zinc-900">
@@ -30,6 +36,7 @@ const MainContent = ({ endpoint, category }) => {
           </div>
         ))}
       </div>
+      <Pagination currentPage={currentPage} onPageChange={handlePageChange} />
     </main>
   );
 };
@@ -37,6 +44,7 @@ const MainContent = ({ endpoint, category }) => {
 MainContent.propTypes = {
   endpoint: PropTypes.string,
   category: PropTypes.string,
+  page: PropTypes.string,
 };
 
 export default MainContent;
