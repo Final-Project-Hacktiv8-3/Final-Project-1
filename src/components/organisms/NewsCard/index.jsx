@@ -19,7 +19,7 @@ export const NewsCard = ({
   urlToImage,
 }) => {
   NewsCard.propTypes = {
-    source: PropTypes.obj,
+    source: PropTypes.object,
     title: PropTypes.string,
     description: PropTypes.string,
     publishedAt: PropTypes.string,
@@ -39,7 +39,7 @@ export const NewsCard = ({
   };
 
   return (
-    <article className="flex flex-col justify-between p-3 w-80 h-[480px] rounded-lg shadow shadow-black dark:shadow-white bg-white dark:bg-transparent">
+    <article className="flex flex-col justify-between px-3 pt-3 pb-2 w-80 h-[480px] rounded-lg shadow shadow-black dark:shadow-white bg-white dark:bg-transparent">
       <div className="flex-0">
         <figure className="h-40">
           <img
@@ -68,19 +68,18 @@ export const NewsCard = ({
             {description ? description : "Description not found."}
           </p>
         </div>
-        <div className="flex justify-between gap-4 pt-2 items-center border-t border-slate-900 dark:border-white">
+        <div className="flex justify-between gap-4 pt-2 -mx-1 items-center border-t border-slate-900 dark:border-white">
           <a href={url} target="_blank" rel="noreferrer">
             <Button
               className="font-medium border-2 border-slate-900 hover:scale-105 transition-all dark:border-white"
-              size="w-fit"
-            >
+              size="w-fit">
               Read More
             </Button>
           </a>
           <button
             className="hover:scale-110 transition-all"
             onClick={handleSaveNews}
-          >
+            type="button">
             {isNewsSaved ? (
               <PiBookmarkSimpleFill size={28} title="Unsave News" />
             ) : (

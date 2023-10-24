@@ -1,9 +1,8 @@
 import Button from "@components/atoms/Button";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 export const Pagination = ({ currentPage, onPageChange }) => {
-  const { isDisabled, setIsDisabled } = useState(false);
   Pagination.propTypes = {
     currentPage: PropTypes.number,
     totalPages: PropTypes.number,
@@ -17,27 +16,33 @@ export const Pagination = ({ currentPage, onPageChange }) => {
   const handleNextClick = () => {
     onPageChange(currentPage + 1);
   };
+
+  const buttonClass = () =>
+    `rounded-full text-zinc-900 border-2 border-zinc-900 dark:border-white hover:text-white hover:bg-zinc-900 dark:text-white dark:bg-zinc-900 dark:hover:bg-white dark:hover:text-zinc-900 `;
+
   useEffect(() => {
-    if (currentPage < 1) {
-      setIsDisabled(true);
-    }
-  }, [currentPage, setIsDisabled]);
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   return (
-    <div className="flex gap-x-5 my-4">
+    <div className="flex gap-x-3 my-4">
       <Button
-        className="flex justify-center items-center bg-slate-400 rounded-full"
-        disabled={isDisabled}
-        onClick={handlePreviousClick}
-      >
-        <MdNavigateBefore className="text-white" />
-        <h1 className="text-white">Previous</h1>
+        className={`flex justify-center items-center ${buttonClass} disabled:opacity-50 disabled:cursor-not-allowed`}
+        disabled={currentPage === 1}
+        onClick={handlePreviousClick}>
+        <MdNavigateBefore />
+        <h1>Previous</h1>
       </Button>
+      <div className="flex justify-center items-center">
+        <div className="rounded-full px-3.5 py-1.5 text-zinc-900 border-2 border-zinc-900 dark:text-white dark:border-white">
+          <span className="cursor-default font-medium">{currentPage}</span>
+        </div>
+      </div>
       <Button
-        className="flex justify-center items-center bg-slate-400 rounded-full"
-        onClick={handleNextClick}
-      >
-        <h1 className="text-white">Next</h1>
-        <MdNavigateNext className="text-white" />
+        className={`flex justify-center items-center ${buttonClass}`}
+        onClick={handleNextClick}>
+        <h1>Next</h1>
+        <MdNavigateNext />
       </Button>
     </div>
   );

@@ -15,14 +15,14 @@ const MainContent = ({ endpoint, category }) => {
 
   return (
     <main className="flex flex-col gap-x-5 items-center justify-center w-full min-h-screen bg-white dark:bg-zinc-900">
-      <section className="mt-[10vh] w-full flex flex-col justify-center items-center">
+      <section className="mt-[10vh] w-full flex flex-col justify-center items-center max-w-7xl">
         <h1 className=" capitalize text-4xl dark:text-white">
           {category} News
         </h1>
         <div className="border-b-2 border-slate-900 dark:border-white w-[70%] m-[1rem]" />
       </section>
       {isLoading && <Loading />}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+      <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 my-5">
         {data?.articles.map((item, index) => (
           <div key={index}>
             <NewsCard

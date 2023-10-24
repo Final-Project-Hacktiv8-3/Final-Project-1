@@ -6,7 +6,7 @@ export const Save = () => {
   return (
     <>
       <Navbar />
-      <main className="flex flex-col gap-x-5 items-center justify-center w-full min-h-screen">
+      <main className="flex flex-col gap-x-5 items-center justify-center w-full min-h-screen dark:bg-zinc-900 dark:text-white">
         {savedNews.length > 0 ? (
           <div className="w-full">
             <section className="mt-[10vh] w-full flex flex-col justify-center items-center">
