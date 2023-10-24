@@ -31,7 +31,7 @@ export const SearchInput = ({
           onKeyDown={onKeyDown}
           onChange={onChange}
           id="default-search"
-          className={`block ${width} p-2 pl-12 text-sm text-gray-900 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500`}
+          className={`block ${width} p-2 pl-12 text-sm text-gray-900 rounded-lg bg-gray-300 focus:ring-blue-500 focus:border-blue-500`}
           placeholder={placeholder}
           required
         />
