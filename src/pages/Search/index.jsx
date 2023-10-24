@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { Navbar } from "../../components/organisms";
-import MainContent from "../../components/templates/MainContent";
-import { endpoints } from "../../lib";
+import { Navbar } from "@components/organisms";
+import MainContent from "@components/templates/MainContent";
+import { endpoints } from "@lib";
 
 export const Search = () => {
   const { search } = useParams();

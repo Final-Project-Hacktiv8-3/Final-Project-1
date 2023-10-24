@@ -1,6 +1,6 @@
-import { Navbar } from "../../components/organisms";
-import MainContent from "../../components/templates/MainContent";
-import { endpoints } from "../../lib";
+import { Navbar } from "@components/organisms/navbar";
+import MainContent from "@components/templates/MainContent";
+import { endpoints } from "@lib";
 
 export const Home = () => {
   return (

@@ -1,4 +1,4 @@
-import { Navbar, NewsCard } from "../../components/organisms/index.js";
+import { Navbar, NewsCard } from "@components/organisms";
 import { useSelector } from "react-redux";
 
 export const Save = () => {

@@ -1,4 +1,4 @@
-import Button from "../../atoms/Button";
+import Button from "@components/atoms/Button";
 import PropTypes from "prop-types";
 import {
   PiBookmarkSimpleBold,
@@ -6,7 +6,7 @@ import {
   PiCalendarBlank,
   PiUser,
 } from "react-icons/pi";
-import { formattedDate } from "../../../lib";
+import { formattedDate } from "@lib";
 import { useDispatch, useSelector } from "react-redux";
 import { saveNews } from "../../../features/news/newsSlice";
 
@@ -72,17 +72,19 @@ export const NewsCard = ({
           <a href={url} target="_blank" rel="noreferrer">
             <Button
               className="font-medium border-2 border-slate-900 hover:scale-105 transition-all"
-              size="w-fit">
+              size="w-fit"
+            >
               Read More
             </Button>
           </a>
           <button
             className="hover:scale-110 transition-all"
-            onClick={handleSaveNews}>
+            onClick={handleSaveNews}
+          >
             {isNewsSaved ? (
-              <PiBookmarkSimpleFill size={28} title="Unsave News"/>
+              <PiBookmarkSimpleFill size={28} title="Unsave News" />
             ) : (
-              <PiBookmarkSimpleBold size={28} title="Save News"/>
+              <PiBookmarkSimpleBold size={28} title="Save News" />
             )}
           </button>
         </div>
