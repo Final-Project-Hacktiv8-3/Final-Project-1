@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-
-import { BsList } from "react-icons/bs";
-
-import { NavDropDown, SearchInput } from "@components/molucules";
 import Button from "@components/atoms/Button";
+import {
+  NavDropDown,
+  SearchInput,
+  ToogleDarkMode,
+} from "@components/molucules";
+import { BsList } from "react-icons/bs";
 
 export const Navbar = () => {
   const [dropDown, setDropDown] = useState(false);
@@ -35,6 +37,7 @@ export const Navbar = () => {
       link: "/save",
     },
   ];
+
   const handleKeyPresed = (e) => {
     if (e.key === "Enter") {
       navigate(`/search/${search}`);
@@ -55,7 +58,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`w-full flex fixed items-center justify-between md:px-16 px-8 font-semibold bg-white dark:bg-zinc-900 duration-300 ease-out text-slate-500  h-[8vh] z-50`}
+      className={`w-full flex fixed items-center justify-between md:px-12 px-6 font-semibold bg-white dark:bg-zinc-900 duration-300 ease-out text-slate-500  h-[8vh] z-50`}
     >
       <nav className="hidden md:block">
         <ul className="flex gap-x-6">
@@ -68,20 +71,25 @@ export const Navbar = () => {
           ))}
         </ul>
       </nav>
-      <SearchInput
-        placeholder="Cari Berita"
-        onChange={(e) => setSearch(e.target.value)}
-        onKeyDown={(e) => handleKeyPresed(e)}
-      />
+      <div className="flex gap-x-3 justify-center items-center md:flex-row flex-row-reverse">
+        <ToogleDarkMode />
+
+        <SearchInput
+          width="w-full"
+          placeholder="Cari Berita"
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyDown={(e) => handleKeyPresed(e)}
+        />
+      </div>
 
       {/* Mobile */}
       <nav className="block md:hidden">
         <Button
           onClick={isDropDown}
           size="w-fit"
-          className={`flex items-center  rounded-md text-white hover:bg-slate-500`}
+          className={`flex items-center  rounded-md   `}
         >
-          <BsList />
+          <BsList className="text-zinc-900 dark:text-white" />
         </Button>
         <NavDropDown className={`-mx-[40vw] rounded-md`} isDropDown={dropDown}>
           <ul

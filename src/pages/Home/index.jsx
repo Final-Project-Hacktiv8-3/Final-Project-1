@@ -1,4 +1,4 @@
-import { Navbar } from "@components/organisms/navbar";
+import { Navbar } from "@components/organisms";
 import MainContent from "@components/templates/MainContent";
 import { endpoints } from "@lib";
 

@@ -1,4 +1,3 @@
-import Button from "@components/atoms/Button";
 import PropTypes from "prop-types";
 import {
   PiBookmarkSimpleBold,
@@ -9,6 +8,7 @@ import {
 import { formattedDate } from "@lib";
 import { useDispatch, useSelector } from "react-redux";
 import { saveNews } from "../../../features/news/newsSlice";
+import Button from "@components/atoms/Button";
 
 export const NewsCard = ({
   source,
@@ -39,7 +39,7 @@ export const NewsCard = ({
   };
 
   return (
-    <article className="flex flex-col justify-between p-3 w-80 h-[480px] rounded-lg shadow shadow-black">
+    <article className="flex flex-col justify-between p-3 w-80 h-[480px] rounded-lg shadow shadow-black dark:shadow-white bg-white dark:bg-transparent">
       <div className="flex-0">
         <figure className="h-40">
           <img
@@ -49,7 +49,7 @@ export const NewsCard = ({
           />
         </figure>
       </div>
-      <div className="flex-1 flex flex-col justify-between mt-2">
+      <div className="flex-1 flex flex-col justify-between mt-2 text-zinc-900 dark:text-slate-200">
         <div>
           <a href={url} target="_blank" rel="noreferrer">
             <h1 className="font-semibold text-xl line-clamp-3">{title}</h1>
@@ -68,10 +68,10 @@ export const NewsCard = ({
             {description ? description : "Description not found."}
           </p>
         </div>
-        <div className="flex justify-between gap-4 pt-2 items-center border-t border-slate-900">
+        <div className="flex justify-between gap-4 pt-2 items-center border-t border-slate-900 dark:border-white">
           <a href={url} target="_blank" rel="noreferrer">
             <Button
-              className="font-medium border-2 border-slate-900 hover:scale-105 transition-all"
+              className="font-medium border-2 border-slate-900 hover:scale-105 transition-all dark:border-white"
               size="w-fit"
             >
               Read More
