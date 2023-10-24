@@ -1,8 +1,8 @@
 export const endpoints = {
-  indonesia: "top-headlines?country=id",
-  programing: "everything?q=programing",
-  covid19: "everything?q=covid-19",
-  search: "everything?q=",
+  indonesia: "top-headlines?country=id&pageSize=8",
+  programing: "everything?q=programing&pageSize=8",
+  covid19: "everything?q=covid-19&pageSize=8",
+  search: "everything?&pageSize=8&q=",
 };
 
 export const formattedDate = (input) => {

@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 const Button = ({
   children,
   className,
+  disabled,
   size = "h-10 w-28",
   type = "button",
   onClick = () => {},
@@ -10,7 +11,9 @@ const Button = ({
     <button
       className={`px-4 py-2 rounded-lg transition-all ${className} ${size}`}
       type={type}
-      onClick={onClick}>
+      disabled={disabled}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
@@ -18,6 +21,7 @@ const Button = ({
 
 Button.propTypes = {
   children: PropTypes.node,
+  disabled: PropTypes.bool,
   className: PropTypes.string,
   size: PropTypes.string,
   type: PropTypes.string,
