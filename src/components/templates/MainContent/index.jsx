@@ -1,6 +1,6 @@
-import useFetchData from "../../../hooks/useFetchData";
-import { Loading } from "../../molucules";
-import { NewsCard } from "../../organisms";
+import useFetchData from "@hooks/useFetchData";
+import { Loading } from "@components/molucules";
+import { NewsCard } from "@components/organisms";
 
 import PropTypes from "prop-types";
 

@@ -3,8 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 import { BsList } from "react-icons/bs";
 
-import { NavDropDown, SearchInput } from "../../molucules";
-import Button from "../../atoms/Button";
+import { NavDropDown, SearchInput } from "@components/molucules";
+import Button from "@components/atoms/Button";
 
 export const Navbar = () => {
   const [dropDown, setDropDown] = useState(false);
