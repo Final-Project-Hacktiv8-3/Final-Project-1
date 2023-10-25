@@ -2,10 +2,10 @@ import Button from "@components/atoms/Button";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
-export const Pagination = ({ currentPage, onPageChange }) => {
+export const Pagination = ({ currentPage, onPageChange, maxPages }) => {
   Pagination.propTypes = {
     currentPage: PropTypes.number,
-    totalPages: PropTypes.number,
+    maxPages: PropTypes.number,
     onPageChange: PropTypes.func,
   };
   const handlePreviousClick = () => {
@@ -29,7 +29,8 @@ export const Pagination = ({ currentPage, onPageChange }) => {
       <Button
         className={`flex justify-center items-center ${buttonClass} disabled:opacity-50 disabled:cursor-not-allowed`}
         disabled={currentPage === 1}
-        onClick={handlePreviousClick}>
+        onClick={handlePreviousClick}
+      >
         <MdNavigateBefore />
         <h1>Previous</h1>
       </Button>
@@ -40,7 +41,9 @@ export const Pagination = ({ currentPage, onPageChange }) => {
       </div>
       <Button
         className={`flex justify-center items-center ${buttonClass}`}
-        onClick={handleNextClick}>
+        disabled={currentPage === Math.ceil(maxPages / 8)}
+        onClick={handleNextClick}
+      >
         <h1>Next</h1>
         <MdNavigateNext />
       </Button>

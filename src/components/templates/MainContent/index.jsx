@@ -8,7 +8,7 @@ import { useState } from "react";
 const MainContent = ({ endpoint, category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isLoading } = useFetchData(`${endpoint}`, currentPage);
-
+  console.log(data?.totalResults);
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -36,7 +36,11 @@ const MainContent = ({ endpoint, category }) => {
           </div>
         ))}
       </div>
-      <Pagination currentPage={currentPage} onPageChange={handlePageChange} />
+      <Pagination
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+        maxPages={data?.totalResults}
+      />
     </main>
   );
 };
