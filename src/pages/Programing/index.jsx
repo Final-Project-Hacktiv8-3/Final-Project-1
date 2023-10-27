@@ -1,4 +1,4 @@
-import { Navbar } from "@components/organisms";
+import { Navbar, Footer } from "@components/organisms";
 import MainContent from "@components/templates/MainContent";
 import { endpoints } from "@lib";
 
@@ -7,6 +7,7 @@ export const Programing = () => {
     <>
       <Navbar />
       <MainContent endpoint={endpoints.programing} category={"Programing"} />
+      <Footer />
     </>
   );
 };
