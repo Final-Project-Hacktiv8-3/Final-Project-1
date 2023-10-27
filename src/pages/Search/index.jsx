@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Navbar } from "@components/organisms";
+import { Footer, Navbar } from "@components/organisms";
 import MainContent from "@components/templates/MainContent";
 import { endpoints } from "@lib";
 
@@ -13,6 +13,7 @@ export const Search = () => {
         endpoint={`${endpoints.search}${search}`}
         category={search}
       />
+      <Footer />
     </>
   );
 };

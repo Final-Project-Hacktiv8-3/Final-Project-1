@@ -1,4 +1,4 @@
-import { Navbar, NewsCard } from "@components/organisms";
+import { Footer, Navbar, NewsCard } from "@components/organisms";
 import { useSelector } from "react-redux";
 
 export const Save = () => {
@@ -32,6 +32,7 @@ export const Save = () => {
           <h1>No Saved News</h1>
         )}
       </main>
+      <Footer />
     </>
   );
 };

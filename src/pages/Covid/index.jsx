@@ -1,4 +1,4 @@
-import { Navbar } from "@components/organisms";
+import { Footer, Navbar } from "@components/organisms";
 import MainContent from "@components/templates/MainContent";
 import { endpoints } from "@lib";
 
@@ -7,6 +7,7 @@ export const Covid = () => {
     <>
       <Navbar />
       <MainContent endpoint={endpoints.covid19} category={"Covid-19"} />
+      <Footer />
     </>
   );
 };
